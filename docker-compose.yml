@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  redis:
+    container_name: redis
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+  db:
+    container_name: db
+    image: postgres:16.2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+      POSTGRES_DB: db
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  api:
+    container_name: api
+    build: ./api
+    hostname: api
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://root:root@db:5432/db
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+      - db
+  test:
+    build:
+      context: ./api
+      dockerfile: Dockerfile.test
+    environment:
+      - DATABASE_URL=postgresql://root:root@db:5432/db
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+      - db
+volumes:
+  pgdata: {}
