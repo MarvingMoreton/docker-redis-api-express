@@ -29,15 +29,5 @@ services:
     depends_on:
       - redis
       - db
-  # test:
-  #   build:
-  #     context: ./api
-  #     dockerfile: Dockerfile.test
-  #   environment:
-  #     - DATABASE_URL=postgresql://root:root@db:5432/db
-  #     - REDIS_HOST=redis
-  #   depends_on:
-  #     - redis
-  #     - db
 volumes:
   pgdata: {}
