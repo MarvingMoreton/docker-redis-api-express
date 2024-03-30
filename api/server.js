@@ -68,8 +68,7 @@ app.get('/articles/:articleId', async (req, res) => {
 
 app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-module.exports = app;
-
+module.exports = { app, prisma, redisClient };
 // Migrated to start.js for test purposes
 // app.listen(5000, function () {
 //     console.log('Web application is listening on port 5000');

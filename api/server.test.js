@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('./server');
+const { app, prisma, redisClient } = require('./server');
 
 describe('API tests', () => {
   it('should seed the database', async () => {
@@ -19,4 +19,13 @@ describe('API tests', () => {
 
     expect(res.body).toHaveProperty('title');
   });
+
+  afterAll(async () => {
+    // Disconnect from the Prisma client
+    await prisma.$disconnect();
+
+    // Disconnect from the Redis client
+    await redisClient.disconnect();
+  });
+
 });
