@@ -85,9 +85,9 @@
 
 
 ### Notes on Provided Files
-  server.test.js: Contains tests for API endpoints, including afterAll hooks for resource cleanup.
-  server.js: The main server file that defines API routes and initializes services.
-  Dockerfile: Instructions for building the Docker image for the API service.
-  .Dockerignore: Lists files and directories to exclude from the Docker context.
-  swagger.js: Script to generate Swagger documentation from code comments.
-  docker-compose.yml: Defines the services, networks, and volumes for running the application with Docker Compose.
+  - server.test.js: Contains tests for API endpoints, including afterAll hooks for resource cleanup.
+  - server.js: The main server file that defines API routes and initializes services.
+  - Dockerfile: Instructions for building the Docker image for the API service.
+  - .Dockerignore: Lists files and directories to exclude from the Docker context.
+  - swagger.js: Script to generate Swagger documentation from code comments.
+  - docker-compose.yml: Defines the services, networks, and volumes for running the application with Docker Compose.
