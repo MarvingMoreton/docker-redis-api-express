@@ -29,5 +29,14 @@ services:
     depends_on:
       - redis
       - db
+  api-test:
+    build: ./api
+    environment:
+      - DATABASE_URL=postgresql://root:root@db:5432/db
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+    command: npm run test
 volumes:
   pgdata: {}

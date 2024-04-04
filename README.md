@@ -63,11 +63,13 @@
 
 
 ## Testing the Application
-  To test the application's API endpoints, ensure you have Jest and Supertest installed as development dependencies. You can run the tests using the following command in the API docker container:
+ To run the unit tests for the application, you can execute the tests inside a Docker container to ensure that the environment is consistent with the production setup. Make sure Docker is running, and then use the following command:
 
-    npm test
+    docker-compose up api-test
 
-  The tests check database seeding and article fetching functionalities, among others.
+  This will start the necessary services, execute the test suite, and then shut down the services. The test results will be displayed in the console.
+
+  Note that the `api-test` service is defined in the `docker-compose.yml` to run the unit tests instead of starting the application.
 
 
 ## Troubleshooting
